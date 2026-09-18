@@ -10,9 +10,9 @@ const totalScenes = 3;
    CONFIGURACIÓN DE MÚSICA
    ============================================================ */
 const musicTracks = {
-  1: { src: "music/cancion1.mp3", title: "Seras mi para siempre 💕", fallback: "music/cancion.mp3" },
-  2: { src: "music/cancion2.mp3", title: "SE MI MORFINA ❤️", fallback: "music/cancion.mp3" },
-  3: { src: "music/cancion3.mp3", title: "Todo es por ti 💌", fallback: "music/cancion.mp3" }
+  1: { src: "music/cancion1.mp3", title: "Nuestra Historia 💕", fallback: "music/cancion.mp3" },
+  2: { src: "music/cancion2.mp3", title: "Morfina ✨", fallback: "music/cancion.mp3" },
+  3: { src: "music/cancion3.mp3", title: "Para Ti, Samantha 💌", fallback: "music/cancion.mp3" }
 };
 
 const audioEl = document.getElementById("bgAudio");
@@ -27,6 +27,7 @@ let singleTrackMode = false;
    ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   setupMusicPlayer();
+  setupScene1Petals();
   setupWindCanvas();
   setupStars();
   setupFireflies();
@@ -172,7 +173,26 @@ function handleSwipe() {
 }
 
 /* ============================================================
-   ESCENA 2: SIMULACIÓN DE VIENTO Y HOJAS EN CANVAS
+   ESCENA 1: PÉTALOS DE FLORES CAYENDO
+   ============================================================ */
+function setupScene1Petals() {
+  const container = document.getElementById("scene1Petals");
+  if (!container) return;
+
+  const petalCount = 14;
+  for (let i = 0; i < petalCount; i++) {
+    const petal = document.createElement("div");
+    petal.className = "scene1-petal";
+    petal.style.left = `${Math.random() * 96}%`;
+    petal.style.animationDelay = `${Math.random() * 6}s`;
+    petal.style.animationDuration = `${5 + Math.random() * 4}s`;
+    petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+    container.appendChild(petal);
+  }
+}
+
+/* ============================================================
+   ESCENA 2: SIMULACIÓN DE VIENTO Y HOJAS DE SAUCE EN CANVAS
    ============================================================ */
 let resizeWindCanvas = () => {};
 
@@ -191,32 +211,33 @@ function setupWindCanvas() {
 
   window.addEventListener("resize", resizeWindCanvas);
 
-  // Partículas de hojas y pétalos llevadas por el viento
+  // Partículas de viento: hojas de sauce llorón y margaritas amarillas
   const particles = [];
-  const particleCount = 32;
+  const particleCount = 36;
 
-  class WindParticle {
+  class MorfinaWindParticle {
     constructor() {
       this.reset(true);
     }
 
     reset(initial = false) {
       this.x = initial ? Math.random() * width : -30;
-      this.y = Math.random() * (height * 0.75);
-      this.speedX = 2.8 + Math.random() * 4.8;
-      this.speedY = (Math.random() - 0.35) * 1.6;
-      this.size = 7 + Math.random() * 8;
+      this.y = Math.random() * (height * 0.85);
+      this.speedX = 2.2 + Math.random() * 4.2;
+      this.speedY = (Math.random() - 0.35) * 1.5;
+      this.size = 6 + Math.random() * 8;
       this.angle = Math.random() * Math.PI * 2;
-      this.angularSpeed = (Math.random() - 0.5) * 0.09;
-      this.type = Math.random() > 0.35 ? "leaf" : "petal";
-      this.color = this.type === "leaf"
-        ? (Math.random() > 0.5 ? "rgba(105, 185, 70, 0.9)" : "rgba(135, 205, 85, 0.9)")
-        : "rgba(255, 145, 175, 0.92)";
+      this.angularSpeed = (Math.random() - 0.5) * 0.08;
+      // 60% hojas finas de sauce llorón, 40% pétalos amarillos de margaritas de Morfina
+      this.type = Math.random() > 0.4 ? "willow-leaf" : "yellow-petal";
+      this.color = this.type === "willow-leaf"
+        ? (Math.random() > 0.5 ? "rgba(72, 99, 60, 0.88)" : "rgba(90, 122, 75, 0.88)")
+        : "rgba(254, 240, 138, 0.94)";
     }
 
     update() {
       this.x += this.speedX;
-      this.y += Math.sin(this.x * 0.016) * 1.3 + this.speedY;
+      this.y += Math.sin(this.x * 0.018) * 1.2 + this.speedY;
       this.angle += this.angularSpeed;
 
       if (this.x > width + 40 || this.y > height + 40 || this.y < -40) {
@@ -231,24 +252,22 @@ function setupWindCanvas() {
 
       ctx.fillStyle = this.color;
       ctx.beginPath();
-      ctx.ellipse(0, 0, this.size, this.size * 0.46, 0, 0, Math.PI * 2);
+      if (this.type === "willow-leaf") {
+        // Hoja delgada y alargada de sauce llorón
+        ctx.ellipse(0, 0, this.size * 1.4, this.size * 0.35, 0, 0, Math.PI * 2);
+      } else {
+        // Pétalo de margarita amarilla redondeado
+        ctx.ellipse(0, 0, this.size, this.size * 0.55, 0, 0, Math.PI * 2);
+      }
       ctx.fill();
-
-      // Vena central de la hoja
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.35)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(-this.size * 0.65, 0);
-      ctx.lineTo(this.size * 0.65, 0);
-      ctx.stroke();
 
       ctx.restore();
     }
   }
 
-  // Líneas curvas translúcidas de brisa/viento
+  // Ráfagas suaves de brisa
   const windStreaks = [];
-  const streakCount = 7;
+  const streakCount = 6;
 
   class WindStreak {
     constructor() {
@@ -257,10 +276,10 @@ function setupWindCanvas() {
 
     reset(initial = false) {
       this.x = initial ? Math.random() * width : -160;
-      this.y = 40 + Math.random() * (height * 0.65);
-      this.length = 70 + Math.random() * 120;
-      this.speed = 5.5 + Math.random() * 6.5;
-      this.opacity = 0.2 + Math.random() * 0.28;
+      this.y = 50 + Math.random() * (height * 0.65);
+      this.length = 80 + Math.random() * 120;
+      this.speed = 5 + Math.random() * 5.5;
+      this.opacity = 0.18 + Math.random() * 0.22;
     }
 
     update() {
@@ -273,7 +292,7 @@ function setupWindCanvas() {
     draw() {
       ctx.save();
       ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 1.8;
       ctx.lineCap = "round";
 
       ctx.beginPath();
@@ -290,7 +309,7 @@ function setupWindCanvas() {
   }
 
   for (let i = 0; i < particleCount; i++) {
-    particles.push(new WindParticle());
+    particles.push(new MorfinaWindParticle());
   }
 
   for (let i = 0; i < streakCount; i++) {
@@ -303,12 +322,12 @@ function setupWindCanvas() {
     scene2El.addEventListener("pointerdown", (e) => {
       if (currentScene !== 2) return;
       for (let i = 0; i < 10; i++) {
-        const p = new WindParticle();
+        const p = new MorfinaWindParticle();
         p.x = e.clientX || width * 0.2;
         p.y = (e.clientY || height * 0.5) + (Math.random() - 0.5) * 60;
-        p.speedX += 4.5;
+        p.speedX += 4.2;
         particles.push(p);
-        if (particles.length > 55) particles.shift();
+        if (particles.length > 60) particles.shift();
       }
     });
   }
@@ -423,7 +442,7 @@ function sendHeartBurst(e) {
   const x = e.clientX || window.innerWidth / 2;
   const y = e.clientY || window.innerHeight * 0.7;
 
-  const hearts = ["❤️", "💖", "💕", "😻", "😺", "😍", ""];
+  const hearts = ["❤️", "💖", "💕", "✨", "🌸", "🥰", "🌹", "🌼"];
   for (let i = 0; i < 14; i++) {
     const heart = document.createElement("div");
     heart.className = "flying-heart";

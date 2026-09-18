@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#4e3b7b">
-  <title>El regalo para la mujer más linda del mundo y la que amare siemre ❤️</title>
+  <title>El regalo para la mujer más linda del mundo ❤️</title>
 
-  <!-- Google Fonts: tipografías románticas y modernas -->
+  <!-- Google Fonts: tipografías románticas y cinematográficas -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@
   <main class="scenes-wrapper" id="scenesWrapper">
 
     <!-- ========================================================== -->
-    <!-- ESCENA 1: PORTADA & GALERÍA DE FOTOS                       -->
+    <!-- ESCENA 1: PORTADA & GALERÍA DE FOTOS CON FLORES EN MOVIMIENTO-->
     <!-- ========================================================== -->
     <section class="scene scene-1 active" id="scene1" data-scene="1">
       <!-- Ondas decorativas superiores -->
@@ -60,13 +60,49 @@
         </svg>
       </div>
 
+      <!-- Guirnaldas de flores laterales con animación de vaivén -->
+      <div class="scene-1-flower flower-corner-tl">
+        <span class="swaying-flower">🌸</span>
+        <span class="swaying-flower sub-flower">🌺</span>
+        <span class="swaying-flower mini-flower">✨</span>
+      </div>
+      <div class="scene-1-flower flower-corner-tr">
+        <span class="swaying-flower">🌺</span>
+        <span class="swaying-flower sub-flower">🌸</span>
+        <span class="swaying-flower mini-flower">✨</span>
+      </div>
+      <div class="scene-1-flower flower-mid-left">
+        <span class="swaying-flower">🌼</span>
+        <span class="swaying-flower sub-flower">🌸</span>
+      </div>
+      <div class="scene-1-flower flower-mid-right">
+        <span class="swaying-flower">🌸</span>
+        <span class="swaying-flower sub-flower">🌼</span>
+      </div>
+
+      <!-- Capa de pétalos de flores flotando en la escena 1 -->
+      <div class="scene1-floating-petals" id="scene1Petals"></div>
+
       <div class="scene-content scene-1-content">
         <header class="main-header">
           <h1 class="main-title">El regalo para la mujer más linda del mundo</h1>
+          <div class="floral-subtitle">
+            <span>🌸</span>
+            <span class="subtitle-text">Cada instante a tu lado florece</span>
+            <span>🌸</span>
+          </div>
         </header>
 
-        <!-- Corazón central con latido -->
+        <!-- Corazón central con latido y corona floral -->
         <div class="heart-center-container">
+          <div class="floral-wreath">
+            <span class="wreath-item w-1">🌸</span>
+            <span class="wreath-item w-2">🌼</span>
+            <span class="wreath-item w-3">🌷</span>
+            <span class="wreath-item w-4">🌸</span>
+            <span class="wreath-item w-5">🌼</span>
+            <span class="wreath-item w-6">🌷</span>
+          </div>
           <div class="pulsing-heart" id="mainHeart">
             <svg viewBox="0 0 100 90" class="heart-svg">
               <defs>
@@ -85,12 +121,12 @@
         </div>
 
         <!-- ======================================================== -->
-        <!-- GALERÍA DE FOTOS (5 ESPACIOS)                            -->
-        <!-- Coloca tus fotos en la carpeta 'images/'                 -->
+        <!-- GALERÍA DE FOTOS (6 ESPACIOS) CON DETALLES FLORALES      -->
         <!-- ======================================================== -->
         <div class="photos-grid">
           <!-- Foto 1 -->
           <div class="photo-card card-1" onclick="openPhoto(this)">
+            <span class="card-flower-badge badge-tl">🌸</span>
             <div class="photo-inner">
               <img src="images/foto1.jpg" alt="Foto 1" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23ffe4ea\'/><text x=\'50%25\' y=\'45%25\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23d14d72\'>📸</text><text x=\'50%25\' y=\'65%25\' font-family=\'sans-serif\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23777\'>Espacio para foto 1</text></svg>';">
               <span class="photo-label">Espacio para foto</span>
@@ -99,6 +135,7 @@
 
           <!-- Foto 2 -->
           <div class="photo-card card-2" onclick="openPhoto(this)">
+            <span class="card-flower-badge badge-tr">🌼</span>
             <div class="photo-inner">
               <img src="images/foto2.jpg" alt="Foto 2" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23ffe4ea\'/><text x=\'50%25\' y=\'45%25\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23d14d72\'>📸</text><text x=\'50%25\' y=\'65%25\' font-family=\'sans-serif\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23777\'>Espacio para foto 2</text></svg>';">
               <span class="photo-label">Espacio para foto</span>
@@ -107,6 +144,7 @@
 
           <!-- Foto 3 -->
           <div class="photo-card card-3" onclick="openPhoto(this)">
+            <span class="card-flower-badge badge-tl">🌺</span>
             <div class="photo-inner">
               <img src="images/foto3.jpg" alt="Foto 3" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23ffe4ea\'/><text x=\'50%25\' y=\'45%25\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23d14d72\'>📸</text><text x=\'50%25\' y=\'65%25\' font-family=\'sans-serif\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23777\'>Espacio para foto 3</text></svg>';">
               <span class="photo-label">Espacio para foto</span>
@@ -115,6 +153,7 @@
 
           <!-- Foto 4 -->
           <div class="photo-card card-4" onclick="openPhoto(this)">
+            <span class="card-flower-badge badge-tr">🌸</span>
             <div class="photo-inner">
               <img src="images/foto4.jpg" alt="Foto 4" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23ffe4ea\'/><text x=\'50%25\' y=\'45%25\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23d14d72\'>📸</text><text x=\'50%25\' y=\'65%25\' font-family=\'sans-serif\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23777\'>Espacio para foto 4</text></svg>';">
               <span class="photo-label">Espacio para foto</span>
@@ -123,8 +162,18 @@
 
           <!-- Foto 5 -->
           <div class="photo-card card-5" onclick="openPhoto(this)">
+            <span class="card-flower-badge badge-tl">🌷</span>
             <div class="photo-inner">
               <img src="images/foto5.jpg" alt="Foto 5" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23ffe4ea\'/><text x=\'50%25\' y=\'45%25\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23d14d72\'>📸</text><text x=\'50%25\' y=\'65%25\' font-family=\'sans-serif\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23777\'>Espacio para foto 5</text></svg>';">
+              <span class="photo-label">Espacio para foto</span>
+            </div>
+          </div>
+
+          <!-- Foto 6 -->
+          <div class="photo-card card-6" onclick="openPhoto(this)">
+            <span class="card-flower-badge badge-tr">💖</span>
+            <div class="photo-inner">
+              <img src="images/foto6.jpg" alt="Foto 6" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'><rect width=\'100%25\' height=\'100%25\' fill=\'%23ffe4ea\'/><text x=\'50%25\' y=\'45%25\' font-size=\'36\' text-anchor=\'middle\' fill=\'%23d14d72\'>📸</text><text x=\'50%25\' y=\'65%25\' font-family=\'sans-serif\' font-size=\'16\' text-anchor=\'middle\' fill=\'%23777\'>Espacio para foto 6</text></svg>';">
               <span class="photo-label">Espacio para foto</span>
             </div>
           </div>
@@ -148,113 +197,176 @@
     </section>
 
     <!-- ========================================================== -->
-    <!-- ESCENA 2: LA COLINA, PAREJA Y EL VIENTO ANIMADO             -->
+    <!-- ESCENA 2: ESTILO "MORFINA" DE HUMBE                         -->
+    <!-- Colina cinematográfica, gran sauce llorón, él con guitarra  -->
+    <!-- y flores amarillas, ella con vestido amarillo al viento     -->
     <!-- ========================================================== -->
     <section class="scene scene-2" id="scene2" data-scene="2">
-      <!-- Sol radiante con rayos de luz -->
-      <div class="sun-container">
-        <div class="sun-glow"></div>
-        <div class="sun-core"></div>
-        <div class="sun-flare flare-1"></div>
-        <div class="sun-flare flare-2"></div>
+      <!-- Filtro cinematográfico 35mm estilo video musical -->
+      <div class="cinematic-vignette"></div>
+
+      <!-- Cielo melancólico y cinematográfico estilo Morfina -->
+      <div class="sky-layer morfina-sky">
+        <div class="cloud cloud-1 morfina-cloud"></div>
+        <div class="cloud cloud-2 morfina-cloud"></div>
+        <div class="cloud cloud-3 morfina-cloud"></div>
       </div>
 
-      <!-- Nubes suaves en movimiento continuo -->
-      <div class="sky-layer">
-        <div class="cloud cloud-1"></div>
-        <div class="cloud cloud-2"></div>
-        <div class="cloud cloud-3"></div>
-        <div class="cloud cloud-4"></div>
-      </div>
-
-      <!-- Aves en vuelo en el horizonte -->
-      <div class="birds-group">
-        <div class="bird bird-1"></div>
-        <div class="bird bird-2"></div>
-        <div class="bird bird-3"></div>
-      </div>
-
-      <!-- Canvas para la animación de ráfagas de viento, hojas y pétalos -->
+      <!-- Canvas para la brisa cinematográfica, hojas de sauce y margaritas amarillas -->
       <canvas id="windCanvas"></canvas>
 
-      <!-- Paisaje multicapa con colinas y vegetación -->
-      <div class="landscape-container">
-        <!-- Colinas distantes en el fondo (profundidad) -->
-        <div class="distant-hills">
-          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" class="hills-svg">
-            <path d="M0,200 Q250,90 500,180 T1000,130 Q1100,150 1200,210 L1200,300 L0,300 Z" fill="rgba(120, 185, 130, 0.45)"/>
-            <path d="M0,230 Q350,140 700,210 Q950,160 1200,220 L1200,300 L0,300 Z" fill="rgba(95, 170, 110, 0.65)"/>
-          </svg>
-        </div>
+      <!-- Paisaje cinematográfico -->
+      <div class="landscape-container morfina-landscape">
+        
+        <!-- EL GRAN SAUCE LLORÓN EN EL CENTRO (Árbol icónico de Morfina) -->
+        <div class="willow-tree-container">
+          <!-- Tronco robusto y corteza del sauce -->
+          <div class="willow-trunk"></div>
+          
+          <!-- Ramas y lianas colgantes del sauce llorón -->
+          <div class="willow-crown">
+            <svg viewBox="0 0 340 320" class="willow-svg">
+              <defs>
+                <linearGradient id="willowGrad1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#4e6840"/>
+                  <stop offset="50%" stop-color="#3b5230"/>
+                  <stop offset="100%" stop-color="#2a3c22"/>
+                </linearGradient>
+                <linearGradient id="willowGrad2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#5a774b"/>
+                  <stop offset="50%" stop-color="#446038"/>
+                  <stop offset="100%" stop-color="#2f4426"/>
+                </linearGradient>
+              </defs>
 
-        <!-- Árbol grande y detallado con follaje que se mece -->
-        <div class="tree-container">
-          <div class="tree-trunk"></div>
-          <div class="tree-branch branch-1"></div>
-          <div class="tree-branch branch-2"></div>
-          <div class="tree-foliage foliage-main"></div>
-          <div class="tree-foliage foliage-sub1"></div>
-          <div class="tree-foliage foliage-sub2"></div>
-          <div class="tree-foliage foliage-sub3"></div>
-          <div class="tree-foliage foliage-sub4"></div>
-        </div>
+              <!-- Masa de follaje superior -->
+              <ellipse cx="170" cy="110" rx="145" ry="95" fill="url(#willowGrad1)" />
+              <ellipse cx="140" cy="85" rx="110" ry="75" fill="url(#willowGrad2)" opacity="0.9" />
+              <ellipse cx="200" cy="95" rx="115" ry="80" fill="url(#willowGrad1)" opacity="0.95" />
 
-        <!-- Silueta romántica de la pareja (propuesta) -->
-        <div class="couple-silhouette">
-          <svg viewBox="0 0 280 230" class="couple-svg">
-            <!-- Sombra de la pareja en el pasto -->
-            <ellipse cx="140" cy="216" rx="95" ry="10" fill="rgba(20, 45, 15, 0.28)" />
-            
-            <!-- HOMBRE ARRODILLADO -->
-            <!-- Cabeza -->
-            <circle cx="178" cy="100" r="14" fill="#141416" />
-            <!-- Cuerpo y torso inclinado con amor -->
-            <path d="M164,114 C172,112 186,112 192,116 L186,152 L170,152 Z" fill="#141416" />
-            <!-- Pierna doblada en suelo -->
-            <path d="M178,152 L200,186 L226,204 L206,210 L188,194 L172,168 Z" fill="#141416" />
-            <!-- Pierna rodilla alzada -->
-            <path d="M166,150 L152,176 L155,208 L144,208 L138,174 L154,150 Z" fill="#141416" />
-            <!-- Brazos ofreciendo la propuesta -->
-            <path d="M166,122 L140,130 L116,128 L116,122 L136,124 L162,116 Z" fill="#141416" />
-            <!-- Caja de anillo o rosa con destello -->
-            <circle cx="116" cy="124" r="5" fill="#e62e4a" />
-            <polygon points="116,114 118,122 126,124 118,126 116,134 114,126 106,124 114,122" fill="#ffd700" class="ring-sparkle" />
+              <!-- Mechones y hojas colgantes del sauce llorón con movimiento -->
+              <g class="hanging-branches branch-set-1">
+                <path d="M50,110 C45,160 55,210 48,270" stroke="#374d2e" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <path d="M75,120 C70,175 80,225 72,285" stroke="#48633c" stroke-width="10" stroke-linecap="round" fill="none"/>
+                <path d="M105,130 C100,185 110,240 102,295" stroke="#3b5230" stroke-width="12" stroke-linecap="round" fill="none"/>
+                <path d="M135,135 C130,190 140,245 132,305" stroke="#4a663e" stroke-width="11" stroke-linecap="round" fill="none"/>
+                <path d="M165,140 C162,195 168,250 160,310" stroke="#374d2e" stroke-width="13" stroke-linecap="round" fill="none"/>
+                <path d="M195,140 C198,195 192,250 200,310" stroke="#4a663e" stroke-width="12" stroke-linecap="round" fill="none"/>
+                <path d="M225,135 C230,190 220,245 228,305" stroke="#3b5230" stroke-width="11" stroke-linecap="round" fill="none"/>
+                <path d="M255,130 C260,185 250,240 258,295" stroke="#48633c" stroke-width="10" stroke-linecap="round" fill="none"/>
+                <path d="M285,120 C290,175 280,225 288,285" stroke="#374d2e" stroke-width="8" stroke-linecap="round" fill="none"/>
+              </g>
 
-            <!-- MUJER DE PIE (SAMANTHA) -->
-            <!-- Pelo al viento -->
-            <circle cx="95" cy="62" r="13" fill="#141416" />
-            <path d="M85,55 C72,72 74,94 82,106 C86,96 92,88 106,75 C94,70 94,54 85,55 Z" fill="#141416" class="flowing-hair" />
-            <!-- Silueta vestido que ondea con la brisa -->
-            <path d="M88,75 C94,73 103,74 104,78 L100,108 L86,108 Z" fill="#141416" />
-            <path d="M96,82 L100,104 L114,124 L118,122 L104,100 L100,80 Z" fill="#141416" />
-            <path d="M90,82 L82,96 L92,98 L94,92 Z" fill="#141416" />
-            <!-- Falda ondulante por el viento -->
-            <path d="M86,108 L100,108 L118,198 C95,204 75,202 60,198 C68,160 76,130 86,108 Z" fill="#141416" class="flutter-dress" />
-            <!-- Piernas -->
-            <path d="M78,198 L78,212 L84,212 L86,198 Z" fill="#141416" />
-            <path d="M96,198 L96,212 L102,212 L102,198 Z" fill="#141416" />
-          </svg>
-        </div>
-
-        <!-- Colina verde principal con flores silvestres y pasto -->
-        <div class="green-hill">
-          <!-- Flores silvestres en la colina -->
-          <div class="wildflowers-container">
-            <span class="wildflower flower-1">🌸</span>
-            <span class="wildflower flower-2">🌼</span>
-            <span class="wildflower flower-3">🌺</span>
-            <span class="wildflower flower-4">🌸</span>
-            <span class="wildflower flower-5">🌼</span>
-            <span class="wildflower flower-6">🌷</span>
+              <!-- Segunda capa de ramas colgantes para máxima densidad -->
+              <g class="hanging-branches branch-set-2">
+                <path d="M60,130 C58,180 65,230 60,280" stroke="#567547" stroke-width="6" stroke-linecap="round" fill="none"/>
+                <path d="M90,140 C88,190 95,240 88,290" stroke="#435e36" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <path d="M120,145 C118,195 125,245 118,300" stroke="#5a7a4b" stroke-width="9" stroke-linecap="round" fill="none"/>
+                <path d="M150,150 C148,200 155,250 148,312" stroke="#415a34" stroke-width="10" stroke-linecap="round" fill="none"/>
+                <path d="M180,150 C182,200 175,250 182,312" stroke="#5a7a4b" stroke-width="10" stroke-linecap="round" fill="none"/>
+                <path d="M210,145 C212,195 205,245 212,300" stroke="#415a34" stroke-width="9" stroke-linecap="round" fill="none"/>
+                <path d="M240,140 C242,190 235,240 242,290" stroke="#567547" stroke-width="8" stroke-linecap="round" fill="none"/>
+                <path d="M270,130 C272,180 265,230 270,280" stroke="#435e36" stroke-width="6" stroke-linecap="round" fill="none"/>
+              </g>
+            </svg>
           </div>
-          <div class="grass-tufts"></div>
+        </div>
+
+        <!-- PERSONAJES DE MORFINA -->
+        <!-- Él a la izquierda con camisa celeste, pantalón gris holgado, guitarra/ramo de margaritas con listón amarillo -->
+        <div class="morfina-character character-him">
+          <svg viewBox="0 0 110 170" class="morfina-svg">
+            <!-- Sombra -->
+            <ellipse cx="50" cy="165" rx="30" ry="5" fill="rgba(25, 35, 20, 0.35)" />
+            
+            <!-- Pelo castaño rizado característico de Humbe -->
+            <circle cx="52" cy="24" r="12" fill="#231713" />
+            <path d="M42,20 C40,10 65,10 64,22 C66,18 64,30 58,34 C50,34 44,28 42,20 Z" fill="#231713" />
+            
+            <!-- Cara de perfil sonriente -->
+            <circle cx="56" cy="27" r="8" fill="#e8cbb6" />
+            
+            <!-- Camisa manga larga celeste a cuadros doblada en antebrazos -->
+            <path d="M42,36 L66,36 L70,72 L40,72 Z" fill="#9bc8e8" />
+            <path d="M42,36 L30,62 L38,65 L48,46 Z" fill="#9bc8e8" />
+            <path d="M64,36 L82,58 L76,62 L60,46 Z" fill="#9bc8e8" />
+
+            <!-- Ramo de margaritas amarillas y blancas con cinta amarilla flotando -->
+            <g class="morfina-bouquet">
+              <circle cx="88" cy="56" r="10" fill="#fff9db" />
+              <circle cx="86" cy="53" r="3.5" fill="#facc15" />
+              <circle cx="91" cy="55" r="3" fill="#facc15" />
+              <circle cx="85" cy="59" r="3" fill="#facc15" />
+              <circle cx="89" cy="60" r="3.5" fill="#facc15" />
+              <circle cx="82" cy="55" r="2.5" fill="#facc15" />
+              <line x1="82" y1="62" x2="74" y2="69" stroke="#5b8642" stroke-width="4" stroke-linecap="round" />
+              <path d="M78,66 C85,80 75,95 90,110 C96,118 90,130 94,142" stroke="#fef08a" stroke-width="2.5" fill="none" class="floating-ribbon" />
+            </g>
+
+            <!-- Cinturón negro con hebilla -->
+            <rect x="40" y="70" width="28" height="5" fill="#1c1917" />
+            <rect x="52" y="70" width="6" height="5" fill="#d4d4d8" />
+
+            <!-- Pantalón holgado de vestir color gris marengo / grafito -->
+            <path d="M38,75 L68,75 L74,158 L56,158 L54,105 L52,105 L50,158 L32,158 Z" fill="#3f3f46" />
+
+            <!-- Zapatos oscuros -->
+            <ellipse cx="38" cy="160" rx="9" ry="4" fill="#18181b" />
+            <ellipse cx="70" cy="160" rx="9" ry="4" fill="#18181b" />
+          </svg>
+        </div>
+
+        <!-- Ella a la derecha (Samantha) con vestido vintage amarillo claro y cabello largo suelto al viento -->
+        <div class="morfina-character character-her">
+          <svg viewBox="0 0 110 170" class="morfina-svg">
+            <!-- Sombra -->
+            <ellipse cx="50" cy="165" rx="28" ry="5" fill="rgba(25, 35, 20, 0.35)" />
+
+            <!-- Melena larga castaña oscura ondeando hacia atrás por la brisa -->
+            <path d="M46,18 C40,25 32,45 28,68 C35,60 44,55 48,40 Z" fill="#261914" class="morfina-hair" />
+            <circle cx="48" cy="22" r="10" fill="#261914" />
+            <!-- Rostro de perfil dulce -->
+            <circle cx="44" cy="26" r="7" fill="#ebd2c0" />
+
+            <!-- Vestido amarillo pastel / mantequilla clásico de Morfina -->
+            <path d="M38,34 L56,34 L54,64 L40,64 Z" fill="#fef9c3" />
+            <circle cx="36" cy="42" r="6" fill="#fef08a" />
+            <circle cx="56" cy="42" r="6" fill="#fef08a" />
+
+            <!-- Brazos extendidos hacia él con emoción -->
+            <path d="M36,44 L22,54 L25,58 L38,48 Z" fill="#ebd2c0" />
+            <path d="M54,44 L40,56 L42,60 L56,48 Z" fill="#ebd2c0" />
+
+            <!-- Lazo en la espalda del vestido -->
+            <path d="M54,60 C62,56 68,64 64,72 C58,72 55,66 54,60 Z" fill="#fde047" />
+
+            <!-- Falda acampanada con vuelo ondulando al viento -->
+            <path d="M40,64 L54,64 C64,95 82,125 76,140 C55,145 35,143 20,138 C28,115 35,90 40,64 Z" fill="#fef08a" class="morfina-skirt" />
+
+            <!-- Piernas delicadas -->
+            <path d="M34,138 L36,160 L40,160 L38,138 Z" fill="#ebd2c0" />
+            <path d="M48,138 L48,160 L52,160 L52,138 Z" fill="#ebd2c0" />
+          </svg>
+        </div>
+
+        <!-- Colina verde con textura de pasto y margaritas -->
+        <div class="morfina-hill">
+          <div class="morfina-field-flowers">
+            <span class="m-flower mf-1">🌼</span>
+            <span class="m-flower mf-2">🌼</span>
+            <span class="m-flower mf-3">🌾</span>
+            <span class="m-flower mf-4">🌼</span>
+            <span class="m-flower mf-5">🌾</span>
+            <span class="m-flower mf-6">🌼</span>
+            <span class="m-flower mf-7">🌼</span>
+          </div>
         </div>
       </div>
 
-      <!-- Frase emotiva sobre la escena 2 -->
-      <div class="scene-2-overlay">
-        <h2 class="scene-2-quote">"Eres como la luna, reflejas la luz del sol"</h2>
-        <span class="wind-hint">🍃 Toca la pantalla para sentir la brisa</span>
+      <!-- Texto poético estilo canción de Humbe -->
+      <div class="scene-2-overlay morfina-text-box">
+        <h2 class="scene-2-quote morfina-lyrics">"Tú me curas todo sin pedir permiso... mi medicina, mi lugar en paz."</h2>
+        <span class="wind-hint morfina-tag">🍃 El viento de nuestro rincón</span>
       </div>
 
       <!-- Barra de navegación -->
@@ -367,7 +479,7 @@
           </div>
 
           <div class="letter-header">
-            <h2 class="letter-title">Para Samantha (mi novia hermosa)</h2>
+            <h2 class="letter-title">Para Samantha</h2>
             <span class="letter-subtitle">La mujer que ilumina mi vida</span>
             <div class="letter-divider">
               <span>❧</span> ❤️ <span>❧</span>
@@ -380,24 +492,24 @@
           <!-- ========================================================== -->
           <div class="letter-body" id="userCustomMessage">
             <p>
-              Mi mujer preciosa 😍,
+              Querida Samantha,
             </p>
             <p>
-              Bueno, lo que me haces sentir definitivamente va más allá de las palabras no sabes lo feliz que me haces
-              Haria todo por ti, te doy mi vida entera solo para ti, enserio no sabes cuanto te amo 
-              Espero que nuestro amor no haga nada más que crecer, y que sea por siempre. 😺
+              Desde que llegaste a mi vida, cada día tiene un brillo diferente y especial.
+              Tu sonrisa tiene el poder de calmar cualquier tormenta y tu mirada me recuerda
+              lo inmensamente afortunado que soy de tenerte a mi lado.
             </p>
             <p>
-              Esta página siempre estara disponible, en cualquier lugar (siempre y cuando tengas internet xd)
-              En fin, GRACIAS por hacerme reir tanto con las cosas que dices, por cada momento juntos y por ser exactamente tú, que es lo que me enamora tanto
-              Eres la mujer más linda, tierna e increíble de este mundo.
+              Este pequeño rincón digital es solo una pequeña muestra de todo lo que significas para mí.
+              Gracias por cada risa compartida, por cada momento juntos y por ser exactamente quien eres:
+              la mujer más linda, tierna e increíble de este mundo.
             </p>
             <p class="letter-highlight">
               "Si tuviera que elegir un solo lugar en el universo, elegiría estar siempre a tu lado."
             </p>
             <p class="letter-signature">
-              Con todo mi AMOR,<br>
-              <strong>Por siempre, para ti ❤️</strong>
+              Con todo mi amor y cariño,<br>
+              <strong>Por siempre tuyo ❤️</strong>
             </p>
           </div>
           <!-- ========================================================== -->
