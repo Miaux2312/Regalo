@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -34,13 +35,16 @@
   <audio id="bgAudio" preload="auto"></audio>
 
   <!-- Pantalla inicial para permitir reproducción automática en móviles -->
+  <!-- Pantalla inicial para desbloquear reproducción de música en celulares -->
   <div class="start-overlay" id="startOverlay">
     <div class="start-modal">
       <div class="start-heart">💖</div>
       <h2>Un regalo muy especial</h2>
       <p>Para la mujer más hermosa de todas... Samantha.</p>
+      <p>Para la mujer más hermosa y especial de este mundo: <strong>Samantha</strong>.</p>
       <button class="start-btn" id="startBtn">Toca para comenzar ✨</button>
       <small>Te recomendamos subir el volumen 🎶</small>
+      <small>Te recomendamos subir el volumen para disfrutar la música 🎶</small>
     </div>
   </div>
 
@@ -66,13 +70,22 @@
         </header>
 
         <!-- Corazón central -->
+        <!-- Corazón central con latido -->
         <div class="heart-center-container">
           <div class="pulsing-heart" id="mainHeart">
             <svg viewBox="0 0 100 90" class="heart-svg">
               <path d="M 50 20 C 50 10, 35 -5, 15 5 C -10 20, 10 55, 50 85 C 90 55, 110 20, 85 5 C 65 -5, 50 10, 50 20 Z" fill="#e62e4a"/>
+              <defs>
+                <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff3366"/>
+                  <stop offset="100%" stop-color="#c9184a"/>
+                </linearGradient>
+              </defs>
+              <path d="M 50 20 C 50 10, 35 -5, 15 5 C -10 20, 10 55, 50 85 C 90 55, 110 20, 85 5 C 65 -5, 50 10, 50 20 Z" fill="url(#heartGrad)"/>
             </svg>
             <div class="heart-text">
               <span>Samantha</span>
+              <span class="heart-name">Samantha</span>
               <span class="heart-emoji">😍</span>
             </div>
           </div>
@@ -82,6 +95,7 @@
         <!-- GALERÍA DE FOTOS (5 ESPACIOS)                            -->
         <!-- Pon tus fotos dentro de la carpeta 'images/' con nombres -->
         <!-- foto1.jpg, foto2.jpg, foto3.jpg, foto4.jpg, foto5.jpg    -->
+        <!-- Coloca tus fotos en la carpeta 'images/'                 -->
         <!-- ======================================================== -->
         <div class="photos-grid">
           <!-- Foto 1 -->
@@ -147,44 +161,94 @@
     <!-- ========================================================== -->
     <section class="scene scene-2" id="scene2" data-scene="2">
       <!-- Cielo y nubes en movimiento -->
+      <!-- Sol radiante con rayos de luz -->
+      <div class="sun-container">
+        <div class="sun-glow"></div>
+        <div class="sun-core"></div>
+        <div class="sun-flare flare-1"></div>
+        <div class="sun-flare flare-2"></div>
+      </div>
+
+      <!-- Nubes suaves en movimiento continuo -->
       <div class="sky-layer">
         <div class="cloud cloud-1"></div>
         <div class="cloud cloud-2"></div>
         <div class="cloud cloud-3"></div>
+        <div class="cloud cloud-4"></div>
       </div>
 
       <!-- Canvas para la animación de viento, hojas y brisa -->
+      <!-- Aves en vuelo en el horizonte -->
+      <div class="birds-group">
+        <div class="bird bird-1"></div>
+        <div class="bird bird-2"></div>
+        <div class="bird bird-3"></div>
+      </div>
+
+      <!-- Canvas para la animación de ráfagas de viento, hojas y pétalos -->
       <canvas id="windCanvas"></canvas>
 
       <!-- Elementos del paisaje -->
+      <!-- Paisaje multicapa con colinas y vegetación -->
       <div class="landscape-container">
         <!-- Árbol con hojas animadas -->
+        <!-- Colinas distantes en el fondo (profundidad) -->
+        <div class="distant-hills">
+          <svg viewBox="0 0 1200 300" preserveAspectRatio="none" class="hills-svg">
+            <path d="M0,200 Q250,90 500,180 T1000,130 Q1100,150 1200,210 L1200,300 L0,300 Z" fill="rgba(120, 185, 130, 0.45)"/>
+            <path d="M0,230 Q350,140 700,210 Q950,160 1200,220 L1200,300 L0,300 Z" fill="rgba(95, 170, 110, 0.65)"/>
+          </svg>
+        </div>
+
+        <!-- Árbol grande y detallado con follaje que se mece -->
         <div class="tree-container">
           <div class="tree-trunk"></div>
           <div class="tree-foliage foliage-1"></div>
           <div class="tree-foliage foliage-2"></div>
           <div class="tree-foliage foliage-3"></div>
           <div class="tree-foliage foliage-4"></div>
+          <div class="tree-branch branch-1"></div>
+          <div class="tree-branch branch-2"></div>
+          <div class="tree-foliage foliage-main"></div>
+          <div class="tree-foliage foliage-sub1"></div>
+          <div class="tree-foliage foliage-sub2"></div>
+          <div class="tree-foliage foliage-sub3"></div>
+          <div class="tree-foliage foliage-sub4"></div>
         </div>
 
         <!-- Silueta de la pareja (hombre arrodillado pidiendo su mano a la mujer) -->
+        <!-- Silueta romántica de la pareja (propuesta) -->
         <div class="couple-silhouette">
           <svg viewBox="0 0 260 220" class="couple-svg">
             <!-- Sombra en el césped -->
             <ellipse cx="130" cy="210" rx="90" ry="10" fill="rgba(0,0,0,0.18)" />
+          <svg viewBox="0 0 280 230" class="couple-svg">
+            <!-- Sombra de la pareja en el pasto -->
+            <ellipse cx="140" cy="216" rx="95" ry="10" fill="rgba(20, 45, 15, 0.28)" />
             
             <!-- Hombre arrodillado -->
+            <!-- HOMBRE ARRODILLADO -->
             <!-- Cabeza -->
             <circle cx="165" cy="98" r="14" fill="#111" />
             <!-- Cuerpo y torso -->
             <path d="M152,112 C160,110 174,110 180,114 L175,150 L158,150 Z" fill="#111" />
+            <circle cx="178" cy="100" r="14" fill="#141416" />
+            <!-- Cuerpo y torso inclinado con amor -->
+            <path d="M164,114 C172,112 186,112 192,116 L186,152 L170,152 Z" fill="#141416" />
             <!-- Pierna doblada en suelo -->
             <path d="M165,150 L188,185 L215,200 L195,206 L175,190 L160,165 Z" fill="#111" />
+            <path d="M178,152 L200,186 L226,204 L206,210 L188,194 L172,168 Z" fill="#141416" />
             <!-- Pierna rodilla alzada -->
             <path d="M155,148 L142,175 L145,205 L135,205 L130,172 L145,148 Z" fill="#111" />
             <!-- Brazos sosteniendo mano de ella -->
             <path d="M154,120 L130,128 L108,126 L108,120 L126,122 L150,115 Z" fill="#111" />
             <circle cx="108" cy="122" r="4" fill="#e62e4a" title="Amor" />
+            <path d="M166,150 L152,176 L155,208 L144,208 L138,174 L154,150 Z" fill="#141416" />
+            <!-- Brazos ofreciendo la propuesta -->
+            <path d="M166,122 L140,130 L116,128 L116,122 L136,124 L162,116 Z" fill="#141416" />
+            <!-- Caja de anillo o rosa con destello -->
+            <circle cx="116" cy="124" r="5" fill="#e62e4a" />
+            <polygon points="116,114 118,122 126,124 118,126 116,134 114,126 106,124 114,122" fill="#ffd700" class="ring-sparkle" />
 
             <!-- Mujer de pie -->
             <!-- Pelo y cabeza -->
@@ -198,21 +262,47 @@
             <path d="M90,82 L82,96 L92,98 L94,92 Z" fill="#111" />
             <!-- Vestido -->
             <path d="M86,108 L100,108 L114,195 C100,198 80,198 68,195 Z" fill="#111" />
+            <!-- MUJER DE PIE (SAMANTHA) -->
+            <!-- Pelo al viento -->
+            <circle cx="95" cy="62" r="13" fill="#141416" />
+            <path d="M85,55 C72,72 74,94 82,106 C86,96 92,88 106,75 C94,70 94,54 85,55 Z" fill="#141416" class="flowing-hair" />
+            <!-- Silueta vestido que ondea con la brisa -->
+            <path d="M88,75 C94,73 103,74 104,78 L100,108 L86,108 Z" fill="#141416" />
+            <path d="M96,82 L100,104 L114,124 L118,122 L104,100 L100,80 Z" fill="#141416" />
+            <path d="M90,82 L82,96 L92,98 L94,92 Z" fill="#141416" />
+            <!-- Falda ondulante por el viento -->
+            <path d="M86,108 L100,108 L118,198 C95,204 75,202 60,198 C68,160 76,130 86,108 Z" fill="#141416" class="flutter-dress" />
             <!-- Piernas -->
             <path d="M78,195 L78,206 L84,206 L86,195 Z" fill="#111" />
             <path d="M96,195 L96,206 L102,206 L102,195 Z" fill="#111" />
+            <path d="M78,198 L78,212 L84,212 L86,198 Z" fill="#141416" />
+            <path d="M96,198 L96,212 L102,212 L102,198 Z" fill="#141416" />
           </svg>
         </div>
 
         <!-- Colina verde -->
+        <!-- Colina verde principal con flores silvestres y pasto -->
         <div class="green-hill">
           <div class="hill-grass"></div>
+          <!-- Flores silvestres en la colina -->
+          <div class="wildflowers-container">
+            <span class="wildflower flower-1">🌸</span>
+            <span class="wildflower flower-2">🌼</span>
+            <span class="wildflower flower-3">🌺</span>
+            <span class="wildflower flower-4">🌸</span>
+            <span class="wildflower flower-5">🌼</span>
+            <span class="wildflower flower-6">🌷</span>
+          </div>
+          <div class="grass-tufts"></div>
         </div>
       </div>
 
       <!-- Texto descriptivo poético de la escena -->
+      <!-- Frase emotiva sobre la escena 2 -->
       <div class="scene-2-overlay">
         <h2 class="scene-2-quote">"Contigo, cada instante se siente como el lugar más hermoso del mundo..."</h2>
+        <h2 class="scene-2-quote">"Donde sea que estemos, si es contigo, es el lugar más hermoso del universo..."</h2>
+        <span class="wind-hint">🍃 Toca la pantalla para sentir la brisa</span>
       </div>
 
       <!-- Barra de navegación -->
@@ -223,6 +313,7 @@
         </button>
         <button class="nav-btn next-btn" onclick="goToScene(3)">
           <span>Mi Mensaje</span>
+          <span>Mi Carta</span>
           <span class="btn-arrow">➜</span>
         </button>
       </div>
@@ -232,12 +323,21 @@
     <!-- ESCENA 3: CARTA ROMÁNTICA Y FLORES CON BRISA                -->
     <!-- ========================================================== -->
     <section class="scene scene-3" id="scene3" data-scene="3">
+      <!-- Fondo de cielo estrellado con nebulosa romántica -->
+      <div class="stars-layer" id="starsLayer"></div>
+      <div class="nebula-glow"></div>
+
       <!-- Partículas de luciérnagas y brillo de fondo -->
       <div class="fireflies-layer" id="firefliesLayer"></div>
 
       <!-- Flores animadas lado izquierdo (acuarela suave) -->
+      <!-- Pétalos de rosas flotando suavemente -->
+      <div class="falling-petals-layer" id="fallingPetalsLayer"></div>
+
+      <!-- Flores animadas lado izquierdo (acuarela rosa y carmesí) -->
       <div class="flowers-side flowers-left">
         <svg viewBox="0 0 200 350" class="flower-svg flower-pink">
+        <svg viewBox="0 0 240 420" class="flower-svg flower-pink">
           <g class="flower-group">
             <path d="M50,340 Q70,220 100,120 Q120,60 130,10" stroke="#3d6d48" stroke-width="5" fill="none"/>
             <!-- Hojas -->
@@ -251,6 +351,21 @@
               <circle cx="20" cy="15" r="17" fill="rgba(230, 95, 120, 0.85)"/>
               <circle cx="0" cy="25" r="15" fill="rgba(205, 70, 95, 0.85)"/>
               <circle cx="0" cy="5" r="9" fill="#f8e79b"/>
+            <path d="M40,410 Q60,260 110,140 Q135,70 150,10" stroke="#366542" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <path d="M80,310 Q40,240 45,180 Q80,210 80,310 Z" fill="#447d51"/>
+            <path d="M100,210 Q145,180 155,210 Q120,230 100,210 Z" fill="#4f8b5d"/>
+            <path d="M125,110 Q85,80 80,115 Q110,125 125,110 Z" fill="#447d51"/>
+
+            <!-- Flor principal grande arriba -->
+            <g transform="translate(150, 25)">
+              <circle cx="-20" cy="-14" r="20" fill="rgba(235, 75, 105, 0.9)"/>
+              <circle cx="20" cy="-14" r="20" fill="rgba(245, 95, 125, 0.9)"/>
+              <circle cx="-25" cy="18" r="22" fill="rgba(220, 60, 90, 0.9)"/>
+              <circle cx="25" cy="18" r="22" fill="rgba(235, 80, 110, 0.9)"/>
+              <circle cx="0" cy="30" r="19" fill="rgba(210, 50, 80, 0.9)"/>
+              <circle cx="0" cy="0" r="16" fill="rgba(255, 130, 155, 0.95)"/>
+              <circle cx="0" cy="4" r="11" fill="#fff194"/>
+              <circle cx="0" cy="4" r="6" fill="#f59e0b"/>
             </g>
             <!-- Flor secundaria más pequeña -->
             <g transform="translate(90, 130)">
@@ -259,14 +374,28 @@
               <circle cx="-14" cy="10" r="13" fill="rgba(215, 80, 105, 0.8)"/>
               <circle cx="14" cy="10" r="13" fill="rgba(230, 95, 120, 0.8)"/>
               <circle cx="0" cy="3" r="7" fill="#f8e79b"/>
+
+            <!-- Flor secundaria intermedia -->
+            <g transform="translate(100, 150)">
+              <circle cx="-15" cy="-10" r="15" fill="rgba(245, 95, 125, 0.85)"/>
+              <circle cx="15" cy="-10" r="15" fill="rgba(235, 75, 105, 0.85)"/>
+              <circle cx="-18" cy="14" r="16" fill="rgba(220, 60, 90, 0.85)"/>
+              <circle cx="18" cy="14" r="16" fill="rgba(240, 85, 115, 0.85)"/>
+              <circle cx="0" cy="2" r="8" fill="#fff194"/>
             </g>
+
+            <!-- Capullos de flores -->
+            <ellipse cx="60" cy="270" rx="10" ry="16" fill="rgba(245, 95, 125, 0.85)" transform="rotate(-25 60 270)"/>
+            <ellipse cx="140" cy="80" rx="9" ry="14" fill="rgba(255, 130, 155, 0.85)" transform="rotate(20 140 80)"/>
           </g>
         </svg>
       </div>
 
       <!-- Flores animadas lado derecho (acuarela violeta) -->
+      <!-- Flores animadas lado derecho (acuarela violeta y lavanda) -->
       <div class="flowers-side flowers-right">
         <svg viewBox="0 0 200 350" class="flower-svg flower-purple">
+        <svg viewBox="0 0 240 420" class="flower-svg flower-purple">
           <g class="flower-group">
             <path d="M150,340 Q130,210 100,110 Q85,50 75,10" stroke="#3d6d48" stroke-width="5" fill="none"/>
             <!-- Hojas -->
@@ -280,6 +409,21 @@
               <circle cx="20" cy="15" r="17" fill="rgba(170, 120, 195, 0.85)"/>
               <circle cx="0" cy="25" r="15" fill="rgba(140, 90, 165, 0.85)"/>
               <circle cx="0" cy="5" r="9" fill="#fff2a8"/>
+            <path d="M200,410 Q180,250 130,130 Q105,60 90,10" stroke="#366542" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <path d="M160,300 Q200,230 195,170 Q160,200 160,300 Z" fill="#447d51"/>
+            <path d="M140,200 Q95,170 85,200 Q120,220 140,200 Z" fill="#4f8b5d"/>
+            <path d="M115,100 Q155,70 160,105 Q130,115 115,100 Z" fill="#447d51"/>
+
+            <!-- Flor principal violeta arriba -->
+            <g transform="translate(90, 25)">
+              <circle cx="-20" cy="-14" r="20" fill="rgba(168, 105, 215, 0.9)"/>
+              <circle cx="20" cy="-14" r="20" fill="rgba(188, 125, 235, 0.9)"/>
+              <circle cx="-25" cy="18" r="22" fill="rgba(148, 85, 195, 0.9)"/>
+              <circle cx="25" cy="18" r="22" fill="rgba(175, 115, 225, 0.9)"/>
+              <circle cx="0" cy="30" r="19" fill="rgba(135, 70, 180, 0.9)"/>
+              <circle cx="0" cy="0" r="16" fill="rgba(205, 150, 255, 0.95)"/>
+              <circle cx="0" cy="4" r="11" fill="#fff5aa"/>
+              <circle cx="0" cy="4" r="6" fill="#eab308"/>
             </g>
             <!-- Flor secundaria violeta -->
             <g transform="translate(105, 120)">
@@ -288,7 +432,19 @@
               <circle cx="-13" cy="9" r="13" fill="rgba(150, 100, 175, 0.8)"/>
               <circle cx="13" cy="9" r="13" fill="rgba(170, 120, 195, 0.8)"/>
               <circle cx="0" cy="3" r="7" fill="#fff2a8"/>
+
+            <!-- Flor secundaria violeta intermedia -->
+            <g transform="translate(140, 140)">
+              <circle cx="-15" cy="-10" r="15" fill="rgba(188, 125, 235, 0.85)"/>
+              <circle cx="15" cy="-10" r="15" fill="rgba(168, 105, 215, 0.85)"/>
+              <circle cx="-18" cy="14" r="16" fill="rgba(148, 85, 195, 0.85)"/>
+              <circle cx="18" cy="14" r="16" fill="rgba(175, 115, 225, 0.85)"/>
+              <circle cx="0" cy="2" r="8" fill="#fff5aa"/>
             </g>
+
+            <!-- Capullos violetas -->
+            <ellipse cx="180" cy="260" rx="10" ry="16" fill="rgba(188, 125, 235, 0.85)" transform="rotate(25 180 260)"/>
+            <ellipse cx="100" cy="70" rx="9" ry="14" fill="rgba(205, 150, 255, 0.85)" transform="rotate(-20 100 70)"/>
           </g>
         </svg>
       </div>
@@ -296,10 +452,18 @@
       <!-- Contenedor central de la carta romántica -->
       <div class="letter-container">
         <div class="letter-card">
+          <!-- Sello de lacre y lazo romántico -->
+          <div class="letter-wax-seal">
+            <span class="seal-icon">💌</span>
+          </div>
+
           <div class="letter-header">
             <span class="letter-stamp">💌</span>
             <h2 class="letter-title">Para Samantha</h2>
             <span class="letter-subtitle">La mujer que ilumina mi vida</span>
+            <div class="letter-divider">
+              <span>❧</span> ❤️ <span>❧</span>
+            </div>
           </div>
 
           <!-- ========================================================== -->
@@ -314,17 +478,22 @@
               Desde que llegaste a mi vida, cada día tiene un brillo diferente y especial.
               Tu sonrisa tiene el poder de calmar cualquier tormenta y tu mirada me recuerda
               lo afortunado que soy de tenerte a mi lado.
+              lo inmensamente afortunado que soy de tenerte a mi lado.
             </p>
             <p>
               Este pequeño rincón digital es solo una muestra de lo mucho que significas para mí.
               Gracias por cada risa compartida, por cada mirada y por ser exactamente quien eres:
               la mujer más increíble, bondadosa y linda de este mundo.
+              Este pequeño rincón digital es solo una pequeña muestra de todo lo que significas para mí.
+              Gracias por cada risa compartida, por cada momento juntos y por ser exactamente quien eres:
+              la mujer más linda, tierna e increíble de este mundo.
             </p>
             <p class="letter-highlight">
               "Si tuviera que elegir un solo lugar en el universo, elegiría estar siempre a tu lado."
             </p>
             <p class="letter-signature">
               Con todo mi amor,<br>
+              Con todo mi amor y cariño,<br>
               <strong>Por siempre tuyo ❤️</strong>
             </p>
           </div>

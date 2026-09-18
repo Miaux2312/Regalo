@@ -1,4 +1,3 @@
-# Regalo.github.io
 # 💖 El regalo para la mujer más linda del mundo - Samantha
 
 Página web interactiva y romántica especialmente optimizada para verse en celulares y lista para ser alojada de forma gratuita en **GitHub Pages**.
