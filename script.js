@@ -8,12 +8,6 @@ const totalScenes = 3;
 
 /* ============================================================
    CONFIGURACIÓN DE MÚSICA
-   Puedes colocar canciones en la carpeta 'music/':
-   - Opción A (Una canción general): nombra tu archivo 'cancion.mp3'
-   - Opción B (Una canción por escena):
-       'cancion1.mp3' (para Portada)
-       'cancion2.mp3' (para Escena de la colina)
-       'cancion3.mp3' (para Carta y flores)
    ============================================================ */
 const musicTracks = {
   1: { src: "music/cancion1.mp3", title: "Nuestra Historia 💕", fallback: "music/cancion.mp3" },
@@ -41,10 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.getElementById("startBtn");
   const startOverlay = document.getElementById("startOverlay");
 
-  startBtn.addEventListener("click", () => {
-    startOverlay.classList.add("hidden");
-    playSceneMusic(1);
-  });
   if (startBtn && startOverlay) {
     startBtn.addEventListener("click", () => {
       startOverlay.classList.add("hidden");
@@ -65,12 +55,10 @@ function setupMusicPlayer() {
   });
 
   audioEl.addEventListener("ended", () => {
-    // Si la canción termina, repetirla
     audioEl.currentTime = 0;
     audioEl.play().catch(() => {});
   });
 
-  // Manejo de error si la canción de la escena no existe, intenta fallback o silencio suave
   audioEl.addEventListener("error", () => {
     const sceneConfig = musicTracks[currentScene];
     if (sceneConfig && audioEl.src.includes(sceneConfig.src) && sceneConfig.fallback) {
@@ -78,7 +66,6 @@ function setupMusicPlayer() {
       audioEl.src = sceneConfig.fallback;
       if (isAudioPlaying) audioEl.play().catch(() => {});
     } else {
-      console.log("Aviso: No se encontró archivo de audio en music/. Coloca tu canción .mp3 en la carpeta music/");
       musicWidget.classList.remove("playing");
       isAudioPlaying = false;
       songTitleEl.textContent = "Agrega tu música 🎵";
@@ -88,29 +75,21 @@ function setupMusicPlayer() {
 
 function playSceneMusic(sceneNum) {
   const track = musicTracks[sceneNum];
-  if (!track) return;
   if (!track || !audioEl) return;
 
-  // Si estamos en modo de una sola pista continua y ya está sonando, no reiniciar
   if (singleTrackMode && isAudioPlaying) {
     return;
   }
 
-  songTitleEl.textContent = track.title;
   if (songTitleEl) songTitleEl.textContent = track.title;
   const targetSrc = singleTrackMode ? track.fallback : track.src;
 
-  // Solo cambiar de fuente si es distinta
   if (!audioEl.src.endsWith(targetSrc)) {
     audioEl.src = targetSrc;
   }
 
   audioEl.play().then(() => {
     isAudioPlaying = true;
-    musicWidget.classList.add("playing");
-  }).catch(err => {
-    console.log("Reproducción automática esperando interacción o archivo no encontrado:", err);
-  });
     if (musicWidget) musicWidget.classList.add("playing");
   }).catch(() => {});
 }
@@ -119,7 +98,6 @@ function pauseMusic() {
   if (!audioEl) return;
   audioEl.pause();
   isAudioPlaying = false;
-  musicWidget.classList.remove("playing");
   if (musicWidget) musicWidget.classList.remove("playing");
 }
 
@@ -127,10 +105,6 @@ function resumeMusic() {
   if (!audioEl) return;
   audioEl.play().then(() => {
     isAudioPlaying = true;
-    musicWidget.classList.add("playing");
-  }).catch(err => {
-    console.log("No se pudo reproducir el audio:", err);
-  });
     if (musicWidget) musicWidget.classList.add("playing");
   }).catch(() => {});
 }
@@ -174,7 +148,6 @@ function goToScene(target) {
   }
 }
 
-// Soporte para gestos táctiles de deslizamiento (Swipe) en celulares
 // Soporte para gestos táctiles tipo Swipe en celulares
 let touchStartX = 0;
 let touchEndX = 0;
@@ -192,10 +165,8 @@ function handleSwipe() {
   const threshold = 65;
   const diff = touchEndX - touchStartX;
   if (diff < -threshold && currentScene < totalScenes) {
-    goToScene(currentScene + 1); // Deslizar hacia la izquierda -> Siguiente
     goToScene(currentScene + 1);
   } else if (diff > threshold && currentScene > 1) {
-    goToScene(currentScene - 1); // Deslizar hacia la derecha -> Anterior
     goToScene(currentScene - 1);
   }
 }
@@ -213,19 +184,15 @@ function setupWindCanvas() {
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
 
-  window.addEventListener("resize", () => {
   resizeWindCanvas = () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-  });
   };
 
-  // Partículas de hojas y pétalos
   window.addEventListener("resize", resizeWindCanvas);
 
   // Partículas de hojas y pétalos llevadas por el viento
   const particles = [];
-  const particleCount = 28;
   const particleCount = 32;
 
   class WindParticle {
@@ -235,29 +202,20 @@ function setupWindCanvas() {
 
     reset(initial = false) {
       this.x = initial ? Math.random() * width : -30;
-      this.y = Math.random() * height * 0.8;
-      this.speedX = 2.5 + Math.random() * 4.5;
-      this.speedY = (Math.random() - 0.3) * 1.5;
-      this.size = 6 + Math.random() * 9;
       this.y = Math.random() * (height * 0.75);
       this.speedX = 2.8 + Math.random() * 4.8;
       this.speedY = (Math.random() - 0.35) * 1.6;
       this.size = 7 + Math.random() * 8;
       this.angle = Math.random() * Math.PI * 2;
-      this.angularSpeed = (Math.random() - 0.5) * 0.08;
-      this.type = Math.random() > 0.4 ? "leaf" : "petal"; // hojas o pétalos rosados
       this.angularSpeed = (Math.random() - 0.5) * 0.09;
       this.type = Math.random() > 0.35 ? "leaf" : "petal";
       this.color = this.type === "leaf"
-        ? (Math.random() > 0.5 ? "rgba(95, 168, 62, 0.85)" : "rgba(125, 195, 75, 0.85)")
-        : "rgba(255, 140, 165, 0.88)";
         ? (Math.random() > 0.5 ? "rgba(105, 185, 70, 0.9)" : "rgba(135, 205, 85, 0.9)")
         : "rgba(255, 145, 175, 0.92)";
     }
 
     update() {
       this.x += this.speedX;
-      this.y += Math.sin(this.x * 0.015) * 1.2 + this.speedY;
       this.y += Math.sin(this.x * 0.016) * 1.3 + this.speedY;
       this.angle += this.angularSpeed;
 
@@ -273,19 +231,13 @@ function setupWindCanvas() {
 
       ctx.fillStyle = this.color;
       ctx.beginPath();
-      // Dibujar forma orgánica de hoja o pétalo
-      ctx.ellipse(0, 0, this.size, this.size * 0.48, 0, 0, Math.PI * 2);
       ctx.ellipse(0, 0, this.size, this.size * 0.46, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Brillo central de la hoja
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
       // Vena central de la hoja
       ctx.strokeStyle = "rgba(255, 255, 255, 0.35)";
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(-this.size * 0.7, 0);
-      ctx.lineTo(this.size * 0.7, 0);
       ctx.moveTo(-this.size * 0.65, 0);
       ctx.lineTo(this.size * 0.65, 0);
       ctx.stroke();
@@ -294,10 +246,8 @@ function setupWindCanvas() {
     }
   }
 
-  // Líneas de ráfagas de viento
   // Líneas curvas translúcidas de brisa/viento
   const windStreaks = [];
-  const streakCount = 6;
   const streakCount = 7;
 
   class WindStreak {
@@ -306,11 +256,6 @@ function setupWindCanvas() {
     }
 
     reset(initial = false) {
-      this.x = initial ? Math.random() * width : -150;
-      this.y = 50 + Math.random() * (height * 0.65);
-      this.length = 60 + Math.random() * 110;
-      this.speed = 5 + Math.random() * 6;
-      this.opacity = 0.15 + Math.random() * 0.25;
       this.x = initial ? Math.random() * width : -160;
       this.y = 40 + Math.random() * (height * 0.65);
       this.length = 70 + Math.random() * 120;
@@ -328,16 +273,13 @@ function setupWindCanvas() {
     draw() {
       ctx.save();
       ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
-      ctx.lineWidth = 1.5;
       ctx.lineWidth = 2;
       ctx.lineCap = "round";
 
       ctx.beginPath();
       ctx.moveTo(this.x, this.y);
-      // Curva suave simulando corriente de brisa
       ctx.quadraticCurveTo(
         this.x + this.length * 0.5,
-        this.y + Math.sin(this.x * 0.02) * 12,
         this.y + Math.sin(this.x * 0.02) * 14,
         this.x + this.length,
         this.y
@@ -355,18 +297,6 @@ function setupWindCanvas() {
     windStreaks.push(new WindStreak());
   }
 
-  // Interacción táctil: al tocar la pantalla de la escena 2 se genera una ráfaga
-  canvas.parentElement.addEventListener("pointerdown", (e) => {
-    if (currentScene !== 2) return;
-    for (let i = 0; i < 8; i++) {
-      const p = new WindParticle();
-      p.x = e.clientX || width * 0.2;
-      p.y = (e.clientY || height * 0.5) + (Math.random() - 0.5) * 40;
-      p.speedX += 4;
-      particles.push(p);
-      if (particles.length > 50) particles.shift();
-    }
-  });
   // Interacción táctil: generar ráfaga al tocar en la escena 2
   const scene2El = document.getElementById("scene2");
   if (scene2El) {
@@ -446,7 +376,6 @@ function setupFireflies() {
 }
 
 /* ============================================================
-   LIGHTBOX DE FOTOS (Al tocar una foto en el celular)
    ESCENA 3: PÉTALOS DE ROSA CAYENDO
    ============================================================ */
 function setupFallingPetals() {
@@ -494,17 +423,13 @@ function sendHeartBurst(e) {
   const x = e.clientX || window.innerWidth / 2;
   const y = e.clientY || window.innerHeight * 0.7;
 
-  const hearts = ["❤️", "💖", "💕", "✨", "🌸", "🥰"];
-  for (let i = 0; i < 12; i++) {
-  const hearts = ["❤️", "💖", "💕", "✨", "🌸", "🥰", "🌹"];
+  const hearts = ["❤️", "💖", "💕", "✨", "🌸", "🥰", ""];
   for (let i = 0; i < 14; i++) {
     const heart = document.createElement("div");
     heart.className = "flying-heart";
     heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
     heart.style.left = `${x}px`;
     heart.style.top = `${y}px`;
-    heart.style.setProperty("--vx", `${(Math.random() - 0.5) * 160}px`);
-    heart.style.animationDelay = `${i * 0.06}s`;
     heart.style.setProperty("--vx", `${(Math.random() - 0.5) * 180}px`);
     heart.style.animationDelay = `${i * 0.05}s`;
     heart.style.animationDuration = `${1.2 + Math.random() * 0.8}s`;
@@ -513,4 +438,3 @@ function sendHeartBurst(e) {
     setTimeout(() => heart.remove(), 2500);
   }
 }
-
