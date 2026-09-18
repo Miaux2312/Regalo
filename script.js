@@ -442,7 +442,7 @@ function sendHeartBurst(e) {
   const x = e.clientX || window.innerWidth / 2;
   const y = e.clientY || window.innerHeight * 0.7;
 
-  const hearts = ["❤️", "💖", "💕", "✨", "🌸", "🥰", "🌹", "🌼"];
+  const hearts = ["❤️", "💖", "💕", "😺", "💞", "💓", "😻",];
   for (let i = 0; i < 14; i++) {
     const heart = document.createElement("div");
     heart.className = "flying-heart";
