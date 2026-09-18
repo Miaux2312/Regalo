@@ -10,9 +10,9 @@ const totalScenes = 3;
    CONFIGURACIÓN DE MÚSICA
    ============================================================ */
 const musicTracks = {
-  1: { src: "music/cancion1.mp3", title: "Nuestra Historia 💕", fallback: "music/cancion.mp3" },
-  2: { src: "music/cancion2.mp3", title: "Morfina ✨", fallback: "music/cancion.mp3" },
-  3: { src: "music/cancion3.mp3", title: "Para Ti, Samantha 💌", fallback: "music/cancion.mp3" }
+  1: { src: "music/cancion1.mp3", title: "Mi para siempre 💕", fallback: "music/cancion.mp3" },
+  2: { src: "music/cancion2.mp3", title: "MI MORFINA", fallback: "music/cancion.mp3" },
+  3: { src: "music/cancion3.mp3", title: "Para Ti, Mi Amor 💌", fallback: "music/cancion.mp3" }
 };
 
 const audioEl = document.getElementById("bgAudio");
